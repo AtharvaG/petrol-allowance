@@ -1,24 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>balle balle</title>
+	<title>Petrol Allowance</title>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+          
 </head>
 <body>
 
-<form method ="post" action = "/post_college">
-	<!-- <label>CollegeID:</label> -->
-	<!-- <input type="text" name="college_id" > -->
-	<label>College Name:</label>
-	<input type="text" name="college_name">
-	<input type="submit"  value = "submit" />	
-</form>
+ <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Logo</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+</nav>
+
+<div class="container">
+	<br><br>
+	<div class="row">
+		<div class="col m8 s12 offset-m2">
+			<p class="center" style="margin-top: 1rem; font-size: 110%;"> Input Form</p>
+			<form method ="post" action = "/post_student">
+				<!-- <label>StudentID:</label> -->
+				<!-- <input type="text" name="student_id"> -->
+          		<label for="autocomplete-input">Student Name</label>				
+				<input type="text" id="autocomplete-input" name="student_name" class="autocomplete">
+				<label>Mobile:</label>
+				<input type="text" name="student_mobile">
+
+				<!-- <label>CollegeID:</label> -->
+				<!-- <input type="text" name="college_id" > -->
+				<label>College Name:</label>
+				<input type="text" name="college_name">
+				<input class="btn" type="submit"  value = "submit" />	
+			</form>		
+		</div>
+	</div>
+</div>
+
+
+
 <br><br>
-<form method ="post" action = "/post_student">
-	<!-- <label>StudentID:</label> -->
-	<!-- <input type="text" name="student_id"> -->
-	<label>Student Name:</label>
-	<input type="text" name="student_name">
-	<label>Mobile:</label>
-	<input type="text" name="student_mobile">
-	<input type="submit" value = "submit">
-</form>
+
+	<!-- Scripts -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+	<script>
+		$(document).ready(function(){
+		$('input.autocomplete').autocomplete({
+			data: {
+			"Apple": null,
+			"Microsoft": null,
+			"Google": 'http://placehold.it/250x250'
+			},
+			limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+			onAutocomplete: function(val) {
+			// Callback function when value is autcompleted.
+			},
+			minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+		});
+
+
+		})
+
+
+	</script>
+
+
+</body>
+
+</html>
+
+
+	<script>
+		<form method ="post" action = "/post_student">
+				<!-- <label>StudentID:</label> -->
+				<!-- <input type="text" name="student_id"> -->
+				<label>Student Name:</label>
+				<input type="text" name="student_name">
+				<label>Mobile:</label>
+				<input type="text" name="student_mobile">
+				<input type="submit" value = "submit">
+			</form>	
+			<form method ="post" action = "/post_college">
+				<!-- <label>CollegeID:</label> -->
+				<!-- <input type="text" name="college_id" > -->
+				<label>College Name:</label>
+				<input type="text" name="college_name">
+				<input type="submit"  value = "submit" />	
+
+          <input type="text" id="autocomplete-input" class="autocomplete">
+          <label for="autocomplete-input">Autocomplete</label>				
+			</form>	
+	</script>
