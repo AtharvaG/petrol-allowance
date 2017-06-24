@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>balle balle</title>
+	<title>Petrol Allowance</title>
 </head>
 <body>
 
-<form method ="post" action = "/post_college">
-	<label>CollegeID:</label>
-	<input type="text" name="college_id" >
+<!-- <form name = "Colleges" method ="post" action = "/temp">
 	<label>College Name:</label>
-	<input type="text" name="college_name">
-	<input type="submit"  value = "submit" />	
+	<select name = "Colleges"> 
+	{% for x in mylist %}
+	<option value = "{{ x }}"{% if loop.first %} selected {% endif %}>{{ x }}</option>
+	{% endfor %}
+	</select>
+	
+	<input type="submit" value = "submit" />	
+</form> -->
+<form method ="post" action = "/group">
+	<label>Student1:</label>
+	<input type="text" name="student1">
+	<label>Student2:</label>
+	<input type="text" name="student2">
+	<label>Student3:</label>
+	<input type="text" name="student3">
+	<label>Student4:</label>
+	<input type="text" name="student4">
+	<input type="submit" value ="submit">
 </form>
-<br><br>
-<form method ="post" action = "/post_student">
-	<label>StudentID:</label>
-	<input type="text" name="student_id">
-	<label>Student Name:</label>
-	<input type="text" name="student_name">
-	<input type="submit" name="submit">
-</form>
+
+
+</body>
+</html>

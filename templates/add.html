@@ -52,13 +52,16 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 	<script>
+
 		$(document).ready(function(){
 		$('input.autocomplete').autocomplete({
-			data: {
-			"Apple": null,
-			"Microsoft": null,
-			"Google": 'http://placehold.it/250x250'
-			},
+			data :  {{ mydict }}
+
+			// 'Apple': null,
+			// 'Microsoft': null,
+			// Google: 'http://placehold.it/250x250'
+			,
+			
 			limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
 			onAutocomplete: function(val) {
 			// Callback function when value is autcompleted.
@@ -71,6 +74,8 @@
 
 
 	</script>
+
+	<h1> hey there {{ mydict }} </h1>
 
 
 </body>
