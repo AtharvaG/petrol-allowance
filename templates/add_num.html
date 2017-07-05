@@ -5,17 +5,28 @@
 </head>
 <body>
 
-<!-- <form name = "Colleges" method ="post" action = "/temp">
+<form name = "Colleges" method ="post" action = "/submit">
 	<label>College Name:</label>
 	<select name = "Colleges"> 
 	{% for x in mylist %}
 	<option value = "{{ x }}"{% if loop.first %} selected {% endif %}>{{ x }}</option>
 	{% endfor %}
 	</select>
+	<br>
+	<br>
+	<label>Student1:</label>
+	<input type="text" name="student1">
+	<label>Student2:</label>
+	<input type="text" name="student2">
+	<label>Student3:</label>
+	<input type="text" name="student3">
+	<label>Student4:</label>
+	<input type="text" name="student4">
 	
 	<input type="submit" value = "submit" />	
-</form> -->
-<form method ="post" action = "/group">
+
+</form>
+<!-- <form method ="post" action = "/group">
 	<label>Student1:</label>
 	<input type="text" name="student1">
 	<label>Student2:</label>
@@ -25,7 +36,7 @@
 	<label>Student4:</label>
 	<input type="text" name="student4">
 	<input type="submit" value ="submit">
-</form>
+</form> -->
 
 
 </body>
