@@ -2,6 +2,7 @@ from flask import Flask
 import mysql.connector
 from flask import render_template
 from flask import request, redirect, url_for, session, flash
+from functools import wraps
 
 
 app = Flask(__name__)
@@ -9,11 +10,24 @@ app = Flask(__name__)
 app.secret_key = "my precious"
 
 
+
+def login_required(f):
+	@wraps(f)
+	def wrap(*args, **kwargs):
+		if 'logged_in' in session:
+			return f(*args,**kwargs)
+		else:
+			flash('you need to login first')
+			return redirect(url_for('login'))
+	return wrap
+
 @app.route('/')
+@login_required
 def index():
 	return render_template('index.html')
 
 @app.route("/post_college", methods = ['POST', 'GET'])
+@login_required
 def post_college():
 
 	cnx = mysql.connector.connect(user='root', password='gomya', database ='Petrol')
@@ -38,6 +52,7 @@ def post_college():
 
 
 @app.route("/select", methods = ['POST', 'GET'])
+@login_required
 def select():
 	cnx = mysql.connector.connect(user='root', password='gomya', database ='Petrol')
 	cursor = cnx.cursor(buffered = True)
@@ -154,9 +169,6 @@ def submit():
 
 		return render_template('add_num.html')
 
-@app.route('/home')
-def home():
-	return "Hello World!"
 @app.route('/welcome')
 def welcome():
 	return render_template('welcome.html')
@@ -174,6 +186,7 @@ def login():
 	return render_template('login.html', error = error)
 
 @app.route('/logout')
+@login_required
 def logout():
 	session.pop('logged_in', None)
 	return redirect(url_for('welcome'))
