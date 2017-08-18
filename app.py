@@ -7,7 +7,7 @@ from functools import wraps
 
 app = Flask(__name__)
 
-app.secret_key = "my precious"
+app.secret_key = "my precious"				
 
 
 
@@ -130,7 +130,7 @@ def submit():
 			print mylist[1]
 
 			get_id = ("SELECT GroupID FROM Groups"
-				"WHERE (Student1 = '%s' AND Student2 = '%s' AND Student3 = '%s' AND Student4 = '%s')`2" %(mylist[0],mylist[1],mylist[2],mylist[3]))
+				"WHERE Student1 = '%s' AND Student2 = '%s' AND Student3 = '%s' AND Student4 = '%s'" %(mylist[0],mylist[1],mylist[2],mylist[3]))
 			cursor.execute(get_id)
 
 			data_id = cursor.fetchall()
@@ -208,14 +208,7 @@ def submit():
 		cursor.close()
 		cnx.close()	
 
-		return render_template('add_num.html')
-
-# @app.route("/amount", methods = ['POST', 'GET'])
-# def submit():
-# 	cnx = mysql.connector.connect(user='root', password='gomya', database ='Petrol')
-# 	cursor = cnx.cursor(buffered = True)
-# 	if request.method == 'POST':
-# 		query_amt = ("INSERT INTO Amount(GroupID, StudentID) SELECT GroupID, Student1 from Groups")
+		return redirect(url_for('select'))
 		
 
 @app.route('/welcome')
