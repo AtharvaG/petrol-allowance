@@ -47,10 +47,6 @@ def post_college():
 	cnx.close()
 	return redirect(url_for('index'))
 
-
-
-
-
 @app.route("/select", methods = ['POST', 'GET'])
 @login_required
 def select():
@@ -163,11 +159,64 @@ def submit():
 			cnx.commit()
 
 
+		query_dist = ("SELECT Distance from Colleges where CollegeID = '%s' " %(col_id_list[0]))
+		cursor.execute(query_dist)
+		dist = cursor.fetchall()
+		dist_list = [] 
 
+		for row in dist:
+			dist_list.append(' '.join(str(x) for x in row))
+
+		# distance = dist_list[0]
+		# distance = [int(i) for i in distance]
+		amt = (int(dist_list[0])*75)/35 
+
+
+
+
+		query_amt1 = (" INSERT INTO Amount VALUES ( %(st1)s, %(amt1)s ) ")
+		amt1_query = {
+		'st1' : mylist[0],
+		'amt1': amt 
+		}
+		cursor.execute(query_amt1,amt1_query)
+		cnx.commit()
+
+		query_amt2 = (" INSERT INTO Amount VALUES ( %(st2)s, %(amt2)s ) ")
+		amt2_query = {
+		'st2' : mylist[1],
+		'amt2': amt
+		}
+		cursor.execute(query_amt2,amt2_query)
+		cnx.commit()
+
+		query_amt3 = (" INSERT INTO Amount VALUES ( %(st3)s, %(amt3)s ) ")
+		amt3_query = {
+		'st3' : mylist[2],
+		'amt3': amt 
+		}
+		cursor.execute(query_amt3,amt3_query)
+		cnx.commit()
+
+		query_amt4 = (" INSERT INTO Amount VALUES ( %(st4)s, %(amt4)s ) ")
+		amt4_query = {
+		'st4' : mylist[3],
+		'amt4': amt
+		}
+		cursor.execute(query_amt4,amt4_query)
+		cnx.commit()
 		cursor.close()
 		cnx.close()	
 
 		return render_template('add_num.html')
+
+# @app.route("/amount", methods = ['POST', 'GET'])
+# def submit():
+# 	cnx = mysql.connector.connect(user='root', password='gomya', database ='Petrol')
+# 	cursor = cnx.cursor(buffered = True)
+# 	if request.method == 'POST':
+# 		query_amt = ("INSERT INTO Amount(GroupID, StudentID) SELECT GroupID, Student1 from Groups")
+		
 
 @app.route('/welcome')
 def welcome():
